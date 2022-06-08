@@ -1,12 +1,11 @@
 package com.sofka.challengebackend.DTO;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
 
 import javax.validation.constraints.NotBlank;
 
 @Data
-public class PuerveyorDTO {
+public class PurveyorDTO {
 
     private String purveyorId;
     @NotBlank(message = "Purveyor Name cannot be blank")
@@ -15,4 +14,5 @@ public class PuerveyorDTO {
     private String purveyorIdentification;
     @NotBlank(message = "Email cannot be blank")
     private String purveyorEmail;
+
 }
