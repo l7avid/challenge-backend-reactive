@@ -12,7 +12,7 @@ public class Product {
     private Integer minAmount;
     private Integer maxAmount;
     private Integer availableAmount;
-    private List<Purveyor> purveyors;
+    private Purveyor purveyor;
 
     public Product(String productName,
                    Long productPrice,
@@ -20,7 +20,7 @@ public class Product {
                    Integer minAmount,
                    Integer maxAmount,
                    Integer availableAmount,
-                   List<Purveyor> purveyors) {
+                   Purveyor purveyor) {
 
         this.productName = productName;
         this.productPrice = productPrice;
@@ -28,7 +28,7 @@ public class Product {
         this.minAmount = minAmount;
         this.maxAmount = maxAmount;
         this.availableAmount = availableAmount;
-        this.purveyors = purveyors;
+        this.purveyor = purveyor;
     }
 
     public String getProductName() {
@@ -79,12 +79,12 @@ public class Product {
         this.availableAmount = availableAmount;
     }
 
-    public List<Purveyor> getPurveyors() {
-        return purveyors;
+    public Purveyor getPurveyor() {
+        return purveyor;
     }
 
-    public void setPurveyors(List<Purveyor> purveyors) {
-        this.purveyors = purveyors;
+    public void setPurveyor(Purveyor purveyor) {
+        this.purveyor = purveyor;
     }
 
     @Override
@@ -109,7 +109,7 @@ public class Product {
                 ", minAmount=" + minAmount +
                 ", maxAmount=" + maxAmount +
                 ", availableAmount=" + availableAmount +
-                ", purveyors=" + purveyors +
+                ", purveyor=" + purveyor +
                 '}';
     }
 }
