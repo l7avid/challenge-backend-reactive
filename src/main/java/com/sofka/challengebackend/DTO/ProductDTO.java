@@ -1,16 +1,12 @@
-package com.sofka.challengebackend.collections;
+package com.sofka.challengebackend.DTO;
 
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 
-@Document(collection = "product")
 @Data
-public class Product {
+public class ProductDTO {
 
-    @Id
     private String productId;
     @NotBlank(message = "Product name cannot be blank")
     private String productName;
