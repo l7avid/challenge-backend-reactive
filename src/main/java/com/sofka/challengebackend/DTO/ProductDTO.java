@@ -17,7 +17,7 @@ public class ProductDTO {
     @NotBlank(message = "Product maximum amount cannot be blank")
     private Integer maxAmount;
     @NotBlank(message = "Product available units cannot be blank")
-    private Integer availableUnits = 0;
+    private Integer availableUnits;
     @NotBlank(message = "Product price cannot be blank")
     private Integer productPrice;
     @NotBlank(message = "Purveyor name cannot be blank")

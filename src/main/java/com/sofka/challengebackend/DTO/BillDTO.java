@@ -1,18 +1,15 @@
-package com.sofka.challengebackend.collections;
+package com.sofka.challengebackend.DTO;
 
+import com.sofka.challengebackend.collections.Product;
 import lombok.Data;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
-@Document(collection = "bill")
-public class Bill {
+public class BillDTO {
 
-    @Id
     private String id;
     @NotBlank(message = "Date cannot be blank")
     private LocalDateTime date;
@@ -25,4 +22,3 @@ public class Bill {
     @NotBlank(message = "Product cannot be blank")
     private List<Product> products;
 }
-
