@@ -22,4 +22,5 @@ public class ProductDTO {
     private Integer productPrice;
     @NotBlank(message = "Purveyor name cannot be blank")
     private String purveyorName;
+
 }
