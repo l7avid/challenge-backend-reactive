@@ -18,6 +18,7 @@ public class GetPurveyorUseCase {
     }
 
     public Mono<PurveyorDTO> getPurveyor(String purveyorName){
-        return repository.findBypurveyorName(purveyorName).map(purveyor -> mapper.toPurveyorDTO(purveyor));
+        return repository.findBypurveyorName(purveyorName).map(purveyor -> mapper.toPurveyorDTO(purveyor))
+                .switchIfEmpty(Mono.error(() -> new Exception("Not able to find a purveyor with the given name")));
     }
 }
