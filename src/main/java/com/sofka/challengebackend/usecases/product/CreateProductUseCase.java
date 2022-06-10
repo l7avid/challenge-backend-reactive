@@ -1,6 +1,7 @@
 package com.sofka.challengebackend.usecases.product;
 
 import com.sofka.challengebackend.DTO.ProductDTO;
+import com.sofka.challengebackend.DTO.PurveyorDTO;
 import com.sofka.challengebackend.mapper.ProductMapper;
 import com.sofka.challengebackend.repository.IProductRepository;
 import org.springframework.stereotype.Service;
@@ -10,7 +11,7 @@ import reactor.core.publisher.Mono;
 import javax.validation.Valid;
 
 @Service
-@Validated
+
 public class CreateProductUseCase {
 
     private final IProductRepository repository;
@@ -21,8 +22,24 @@ public class CreateProductUseCase {
         this.mapper = mapper;
     }
 
-    public Mono<ProductDTO> createProduct(@Valid ProductDTO productDTO){
-        return repository.save(mapper.toProduct(productDTO))
+    public boolean validateAttributes(ProductDTO productDTO){
+            return productDTO.getProductName() != null &&
+                    productDTO.getProductPrice() != null &&
+                    productDTO.getPurveyorName() != null &&
+                    productDTO.getAvailableUnits() != null &&
+                    productDTO.getMaxAmount() != null &&
+                    productDTO.getMinAmount() != null;
+    }
+
+    private Mono<ProductDTO> validateProduct(ProductDTO productDTO){
+        return Mono.just(productDTO)
+                .filter(productDTO1 -> validateAttributes(productDTO1))
+                .switchIfEmpty(Mono.error(() -> new Exception("Missing attributes")));
+    }
+
+    public Mono<ProductDTO> createProduct(ProductDTO productDTO){
+        return validateProduct(productDTO)
+                .flatMap(productDTO1 -> repository.save(mapper.toProduct(productDTO1)))
                 .map(product -> mapper.toProductDTO(product));
     }
 }
