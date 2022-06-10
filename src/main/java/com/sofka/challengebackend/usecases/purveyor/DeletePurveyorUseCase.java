@@ -1,4 +1,4 @@
-package com.sofka.challengebackend.usecases;
+package com.sofka.challengebackend.usecases.purveyor;
 
 import com.sofka.challengebackend.collections.Purveyor;
 import com.sofka.challengebackend.repository.IPurveyorRepository;

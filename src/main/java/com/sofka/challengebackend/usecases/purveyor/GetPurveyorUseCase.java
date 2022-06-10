@@ -1,4 +1,4 @@
-package com.sofka.challengebackend.usecases;
+package com.sofka.challengebackend.usecases.purveyor;
 
 import com.sofka.challengebackend.DTO.PurveyorDTO;
 import com.sofka.challengebackend.mapper.PurveyorMapper;

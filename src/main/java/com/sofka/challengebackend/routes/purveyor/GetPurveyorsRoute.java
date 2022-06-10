@@ -1,7 +1,7 @@
-package com.sofka.challengebackend.routes;
+package com.sofka.challengebackend.routes.purveyor;
 
 import com.sofka.challengebackend.DTO.PurveyorDTO;
-import com.sofka.challengebackend.usecases.GetPurveyorsUseCase;
+import com.sofka.challengebackend.usecases.purveyor.GetPurveyorsUseCase;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
