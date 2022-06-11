@@ -15,7 +15,6 @@ public class Receipt {
     private String receiptId;
     @NotBlank(message = "purveyor cannot be blank")
     private Purveyor purveyor;
-    @NotBlank(message = "date cannot be blank")
     private LocalDateTime date;
     @NotBlank(message = "products cannot be blank")
     private Product product;

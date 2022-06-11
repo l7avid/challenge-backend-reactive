@@ -6,6 +6,8 @@ import com.sofka.challengebackend.repository.IReceiptRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+
 @Service
 public class CreateReceiptUseCase {
 
@@ -19,17 +21,17 @@ public class CreateReceiptUseCase {
 
     private boolean validateAttribute(ReceiptDTO receiptDTO){
         return receiptDTO.getPurveyor() != null &&
-                receiptDTO.getProduct() != null &&
-                receiptDTO.getDate() != null;
+                receiptDTO.getProduct() != null;
     }
 
     private Mono<ReceiptDTO> validateReceipt(ReceiptDTO receiptDTO){
-        return Mono.just(receiptDTO)
+        return  Mono.just(receiptDTO)
                 .filter(receiptDTO1 -> validateAttribute(receiptDTO1))
                 .switchIfEmpty(Mono.error(() -> new Exception("Missing Attributes")));
     }
 
     public Mono<ReceiptDTO> createReceipt(ReceiptDTO receiptDTO){
+        receiptDTO.setDate(LocalDateTime.now());
         return validateReceipt(receiptDTO)
                 .flatMap(receiptDTO1 -> repository.save(mapper.toReceipt(receiptDTO1)))
                 .map(receipt -> mapper.toReceiptDTO(receipt));
