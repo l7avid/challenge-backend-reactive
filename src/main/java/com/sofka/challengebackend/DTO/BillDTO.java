@@ -18,7 +18,7 @@ public class BillDTO {
     @NotBlank(message = "Seller cannot be blank")
     private String seller;
     @NotBlank(message = "Paid cannot be blank")
-    private String totalPaid;
-    @NotBlank(message = "Product cannot be blank")
-    private List<Product> products;
+    private Integer totalPaid;
+    @NotBlank(message = "Products cannot be blank")
+    private List<String> productsId;
 }

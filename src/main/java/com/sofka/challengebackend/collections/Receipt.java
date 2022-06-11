@@ -13,10 +13,10 @@ public class Receipt {
 
     @Id
     private String receiptId;
-    @NotBlank(message = "purveyor cannot be blank")
-    private Purveyor purveyor;
+    @NotBlank(message = "purveyorId cannot be blank")
+    private String purveyorId;
     private LocalDateTime date;
     @NotBlank(message = "products cannot be blank")
-    private Product product;
+    private String productId;
 
 }

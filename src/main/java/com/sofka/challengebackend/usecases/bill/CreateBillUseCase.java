@@ -6,6 +6,9 @@ import com.sofka.challengebackend.repository.IBillRepository;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 @Service
 public class CreateBillUseCase {
 
@@ -22,7 +25,7 @@ public class CreateBillUseCase {
                 billDTO.getClient() != null &&
                 billDTO.getSeller() != null &&
                 billDTO.getTotalPaid() != null &&
-                billDTO.getProducts() != null;
+                billDTO.getProductsId() != null;
     }
 
     private Mono<BillDTO> validateBill(BillDTO billDTO){
@@ -32,6 +35,7 @@ public class CreateBillUseCase {
     }
 
     public Mono<BillDTO> createBill(BillDTO billDTO){
+        billDTO.setDate(LocalDateTime.now(ZoneId.of("America/Bogota")));
         return validateBill(billDTO)
                 .flatMap(billDTO1 -> repository.save(mapper.toBill(billDTO1)))
                 .map(bill -> mapper.toBillDTO(bill));

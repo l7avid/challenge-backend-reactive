@@ -11,9 +11,9 @@ import java.time.LocalDateTime;
 public class ReceiptDTO {
 
     private String receiptId;
-    @NotBlank(message = "purveyor cannot be blank")
-    private Purveyor purveyor;
+    @NotBlank(message = "purveyor id cannot be blank")
+    private String purveyorId;
     private LocalDateTime date;
-    @NotBlank(message = "product cannot be blank")
-    private Product product;
+    @NotBlank(message = "product id cannot be blank")
+    private String productId;
 }

@@ -21,8 +21,8 @@ public class CreateReceiptUseCase {
     }
 
     private boolean validateAttribute(ReceiptDTO receiptDTO){
-        return receiptDTO.getPurveyor() != null &&
-                receiptDTO.getProduct() != null;
+        return receiptDTO.getPurveyorId() != null &&
+                receiptDTO.getProductId() != null;
     }
 
     private Mono<ReceiptDTO> validateReceipt(ReceiptDTO receiptDTO){
