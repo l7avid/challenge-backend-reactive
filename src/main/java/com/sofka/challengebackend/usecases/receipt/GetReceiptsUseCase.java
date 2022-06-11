@@ -18,7 +18,7 @@ public class GetReceiptsUseCase {
         this.mapper = mapper;
     }
 
-    Flux<ReceiptDTO> getAllReceipts(){
+    public Flux<ReceiptDTO> getAllReceipts(){
         return repository.findAll().map(receipt -> mapper.toReceiptDTO(receipt));
     }
 }

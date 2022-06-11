@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 
 @Service
 public class CreateReceiptUseCase {
@@ -31,7 +32,7 @@ public class CreateReceiptUseCase {
     }
 
     public Mono<ReceiptDTO> createReceipt(ReceiptDTO receiptDTO){
-        receiptDTO.setDate(LocalDateTime.now());
+        receiptDTO.setDate(LocalDateTime.now(ZoneId.of("America/Bogota")));
         return validateReceipt(receiptDTO)
                 .flatMap(receiptDTO1 -> repository.save(mapper.toReceipt(receiptDTO1)))
                 .map(receipt -> mapper.toReceiptDTO(receipt));
