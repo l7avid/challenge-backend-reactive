@@ -19,6 +19,6 @@ public class GetBillUseCase {
     }
 
     public Flux<BillDTO> getAllProducts(){
-        return repository.findAll().map(bill -> mapper.toBillDTO(bill)); 
+        return repository.findAll().map(bill -> mapper.toBillDTO(bill));
     }
 }
