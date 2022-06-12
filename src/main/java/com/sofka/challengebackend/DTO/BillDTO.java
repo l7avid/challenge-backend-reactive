@@ -12,7 +12,7 @@ public class BillDTO {
 
     private String id;
     @NotBlank(message = "Date cannot be blank")
-    private LocalDateTime date;
+    private String date;
     @NotBlank(message = "Client cannot be blank")
     private String client;
     @NotBlank(message = "Seller cannot be blank")

@@ -35,7 +35,7 @@ public class CreateBillUseCase {
     }
 
     public Mono<BillDTO> createBill(BillDTO billDTO){
-        billDTO.setDate(LocalDateTime.now(ZoneId.of("America/Bogota")));
+        billDTO.setDate(LocalDateTime.now(ZoneId.of("America/Bogota")).toString());
         return validateBill(billDTO)
                 .flatMap(billDTO1 -> repository.save(mapper.toBill(billDTO1)))
                 .map(bill -> mapper.toBillDTO(bill));

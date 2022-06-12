@@ -16,7 +16,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class GetBillRoute {
 
     @Bean
-    RouterFunction<ServerResponse> getOneBill(GetBillUseCase getBillUseCase){
+    public RouterFunction<ServerResponse> getOneBill(GetBillUseCase getBillUseCase){
         return route(GET("/get/bills"),
                 request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)
