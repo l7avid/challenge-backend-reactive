@@ -25,7 +25,7 @@ public class CreateProductUseCase {
     public boolean validateAttributes(ProductDTO productDTO){
             return productDTO.getProductName() != null &&
                     productDTO.getProductPrice() != null &&
-                    productDTO.getPurveyorName() != null &&
+                    productDTO.getPurveyorId() != null &&
                     productDTO.getAvailableUnits() != null &&
                     productDTO.getMaxAmount() != null &&
                     productDTO.getMinAmount() != null;

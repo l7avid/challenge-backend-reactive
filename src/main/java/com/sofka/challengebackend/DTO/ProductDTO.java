@@ -20,7 +20,7 @@ public class ProductDTO {
     private Integer availableUnits;
     @NotBlank(message = "Product price cannot be blank")
     private Integer productPrice;
-    @NotBlank(message = "Purveyor name cannot be blank")
-    private String purveyorName;
+    @NotBlank(message = "Purveyor id cannot be blank")
+    private String purveyorId;
 
 }

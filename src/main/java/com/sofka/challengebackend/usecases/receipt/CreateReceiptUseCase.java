@@ -22,17 +22,18 @@ public class CreateReceiptUseCase {
 
     private boolean validateAttribute(ReceiptDTO receiptDTO){
         return receiptDTO.getPurveyorId() != null &&
-                receiptDTO.getProductId() != null;
+                receiptDTO.getProductId() != null &&
+                receiptDTO.getProductUnits() != null;
     }
 
     private Mono<ReceiptDTO> validateReceipt(ReceiptDTO receiptDTO){
         return  Mono.just(receiptDTO)
-                .filter(receiptDTO1 -> validateAttribute(receiptDTO1))
+                .filter(receiptDTO1 -> this.validateAttribute(receiptDTO1))
                 .switchIfEmpty(Mono.error(() -> new Exception("Missing Attributes")));
     }
 
     public Mono<ReceiptDTO> createReceipt(ReceiptDTO receiptDTO){
-        receiptDTO.setDate(LocalDateTime.now(ZoneId.of("America/Bogota")));
+        receiptDTO.setDate(LocalDateTime.now(ZoneId.of("America/Bogota")).toString());
         return validateReceipt(receiptDTO)
                 .flatMap(receiptDTO1 -> repository.save(mapper.toReceipt(receiptDTO1)))
                 .map(receipt -> mapper.toReceiptDTO(receipt));

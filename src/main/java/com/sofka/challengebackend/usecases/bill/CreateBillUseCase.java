@@ -30,7 +30,7 @@ public class CreateBillUseCase {
 
     private Mono<BillDTO> validateBill(BillDTO billDTO){
         return Mono.just(billDTO)
-                .filter(billDTO1 -> validateAttributes(billDTO1))
+                .filter(billDTO1 -> this.validateAttributes(billDTO1))
                 .switchIfEmpty(Mono.error(()-> new Exception("Missing attributes")));
     }
 

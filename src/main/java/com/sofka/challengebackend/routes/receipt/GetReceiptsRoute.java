@@ -17,7 +17,7 @@ import static org.springframework.web.reactive.function.server.RouterFunctions.r
 public class GetReceiptsRoute {
 
     @Bean
-    RouterFunction<ServerResponse> getReceipts(GetReceiptsUseCase getReceiptsUseCase){
+    public RouterFunction<ServerResponse> getReceipts(GetReceiptsUseCase getReceiptsUseCase){
         return route(GET("/get/receipts"),
                 request -> ServerResponse.ok()
                         .contentType(MediaType.APPLICATION_JSON)

@@ -22,6 +22,6 @@ public class CreateProductRoute {
                         .flatMap(productDTO -> ServerResponse.ok()
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .bodyValue(productDTO))
-                        .onErrorResume(throwable -> ServerResponse.badRequest().build()));
+                        .onErrorResume(throwable -> ServerResponse.notFound().build()));
     }
 }

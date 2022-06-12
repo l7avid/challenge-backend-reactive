@@ -13,7 +13,9 @@ public class ReceiptDTO {
     private String receiptId;
     @NotBlank(message = "purveyor id cannot be blank")
     private String purveyorId;
-    private LocalDateTime date;
+    private String date;
+    @NotBlank(message = "units cannot be blank")
+    private Integer productUnits;
     @NotBlank(message = "product id cannot be blank")
     private String productId;
 }
